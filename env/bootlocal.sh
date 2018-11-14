@@ -6,9 +6,6 @@
 # 		env		# for env
 # 		data  	# for data
 
-# check to root
-# sudo -i
-
 #change the mirror
 #sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://f1361db2.m.daocloud.io |g" /var/lib/boot2docker/profile
 sudo sed -i "s|EXTRA_ARGS='.*$|EXTRA_ARGS='--registry-mirror=http://f1361db2.m.daocloud.io |g" /var/lib/boot2docker/profile
@@ -19,7 +16,12 @@ sudo mkdir -p /var/docker-worspace/docker-envs/env;
 #sudo cp -Rf /c/Users/docker-envs/env  /var/docker-worspace/docker-envs/env;
 # notice! change the username 'Administrator'.
 # sudo cp -Rf /c/Users/Administrator/.docker/docker-workspace/docker-envs/env/*  /var/docker-worspace/docker-envs/env;
-userpath=$(find /c/Users/ -name machines -maxdepth 4 -type d > /tmp/sed && sed -i "s/\.docker\/machine\/machines//g" /tmp/sed && cat /tmp/sed);
+
+find /c/Users/ -name machines -maxdepth 4 -type d > tpmsed;
+sed -i "s/\.docker\/machine\/machines//g" tpmsed;
+userpath=$(cat tpmsed);
+rm -rf tpmsed;
+#userpath=$(find /c/Users/ -name machines -maxdepth 4 -type d > /tmp/sed && sed -i "s/\.docker\/machine\/machines//g" /tmp/sed && cat /tmp/sed);
 sudo cp -Rf ${userpath}.docker/docker-workspace/docker-envs/env/*  /var/docker-worspace/docker-envs/env;
 
 #phpMyAdmin
