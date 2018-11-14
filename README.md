@@ -10,8 +10,10 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/100.png)
 
 ### 2. Config the dockertool ### 
-* Map `C:\Users\Administrator\\.docker` to `D:\\.docker`
+* Map `C:\Users\Administrator\.docker` to `D:\.docker`
 ```
+mkdir /d/.docker-----gitbash
+
 win+r
 input 'cmd'
 mklink /J C:\Users\Administrator\.docker D:\.docker 
