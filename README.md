@@ -30,8 +30,9 @@ docker-machine stop
 
 
 
-* Create `docker-workspace` in `D:\\.docker` and add docker-envs
+* Create `docker-workspace` in `D:\.docker` and add docker-envs
 ```
+cd ~/.docker
 mkdir docker-workspace
 cd docker-workspace
 git clone -b master_nmp  https://github.com/myzero1/docker-envs.git
