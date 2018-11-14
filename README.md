@@ -3,7 +3,7 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 
 # How To Use
 ### 1. Install dockertool ###
-* Download last version docker-toolbox,from https://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/.
+* Download last version docker-toolbox,from https://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/, and install the docker-toolbox.
 
 ### 2. Config the dockertool ### 
 * Map `C:\Users\Administrator\.docker` to `D:\.docker`
