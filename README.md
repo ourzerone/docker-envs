@@ -5,10 +5,6 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 ### 1. Install dockertool ###
 * Download last version docker-toolbox,from https://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/.
 
-* Create default machine.by runing the docker quickstart.
-
-![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/100.png)
-
 ### 2. Config the dockertool ### 
 * Map `C:\Users\Administrator\.docker` to `D:\.docker`
 ```
@@ -17,8 +13,9 @@ mkdir /d/.docker-----gitbash
 win+r
 input 'cmd'
 mklink /J C:\Users\Administrator\.docker D:\.docker 
+ Create default machine.by runing the docker quickstart
 ```
-
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/100.png)
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/101.png)
 
 
