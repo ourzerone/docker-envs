@@ -95,7 +95,7 @@ add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/107.png)
 
 
-* Use `docker-compose`
+* Use `gitflow-plus`
 ```
 cd /c/Windows/System32/drivers/etc
 vi hosts
@@ -105,7 +105,7 @@ add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
 
 
-* Use `gitflow-plus`
+* Use `docker-compose`
 ```
 cd /d/.docker/docker-workspace/docker-envs/env
 docker-compose.exe up -d
