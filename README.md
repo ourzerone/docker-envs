@@ -3,7 +3,7 @@
 ```cmd
 
 dockertool和docker-ccompose的使用
-	安装dockertool
+    安装dockertool
 		下载最新版本 https://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/ 按提示进行安装，直接使用docker quickstart，新建default machine.
 
 	设置dockertool
@@ -27,3 +27,109 @@ dockertool和docker-ccompose的使用
 			http://phpmyadmin.app.test/直接访问数据库
 
 ```
+
+
+
+# docker-envs
+It is a develper env.include nginx,mysql,php,mangodb,redis....services.
+
+# How To Use
+### 1. Install dockertool ###
+* Download last version docker-toolbox,from https://mirrors.aliyun.com/docker-toolbox/windows/docker-toolbox/.
+
+* Create default machine.by runing the docker quickstart.
+
+### 2. Config the dockertool ### 
+* Map `C:\Users\Administrator\\.docker` to `D:\\.docker`
+    ```
+win+r
+input 'cmd'
+mklink /J C:\Users\Administrator\.docker D:\.docker 
+    ```
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/101.png)
+
+
+
+* Setting the network of default in virtualBox.
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/102.png)
+
+
+
+* Create `docker-workspace` in `D:\\.docker` and add docker-envs
+    ```
+mkdir docker-workspace
+git clone -b master_nmp  https://github.com/myzero1/docker-envs.git
+The files tree will as follows
+D:\.docker
+    docker-workspace
+        docker-envs
+            app
+                .gitignore
+            env
+                services
+                bootlocal.sh
+                docker-compose.yml
+                docker-compose.yml.hub
+                docker-compose.yml.hub.app
+                docker-compose.yml.hub.app.dis
+                docker-compose.yml.hub.nmp
+                docker-compose.yml.hub.nmp.dis
+            .gitignore
+            gitflow-plus-init.sh
+            LICENSE
+            README.md
+    ```
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/103.png)
+
+
+
+* Settting `bootlocal.sh` in docker-machine
+    ```
+docker-machine.exe ssh
+sudo vi /var/lib/boot2docker/bootlocal.sh
+cp the content of D:\.docker\docker-workspace\docker-envs\env\bootlocal.sh to /var/lib/boot2docker/bootlocal.sh
+save /var/lib/boot2docker/bootlocal.sh
+docker-machine.exe restart
+    ```
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/104.png)
+
+
+
+* Settting `docker-compose.yml`
+    ```
+cd /d/.docker/docker-workspace/docker-envs/env
+cp docker-compose.yml.hub.nmp docker-compose.yml
+edit the docker-compose.yml
+    ```
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/105.png)
+
+
+
+* Settting `hosts`
+    ```
+cd /c/Windows/System32/drivers/etc
+vi hosts
+add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
+    ```
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/107.png)
+
+
+
+* Use `gitflow-plus`
+    ```
+cd /d/.docker/docker-workspace/docker-envs
+bash gitflow-plus-init.sh
+    ```
+
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
+
+
+
+# License
+[MIT](https://github.com/myzero1/docker-envs/blob/master/LICENSE)
