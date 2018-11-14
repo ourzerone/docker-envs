@@ -97,9 +97,8 @@ add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
 
 * Use `gitflow-plus`
 ```
-cd /c/Windows/System32/drivers/etc
-vi hosts
-add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
+cd /d/.docker/docker-workspace/docker-envs
+bash gitflow-plus-init.sh
 ```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
