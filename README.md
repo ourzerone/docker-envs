@@ -14,7 +14,7 @@ mkdir /d/.docker-----gitbash
 win+r
 input 'cmd'
 mklink /J C:\Users\Administrator\.docker D:\.docker 
- Create default machine.by runing the docker quickstart
+Create default machine.by runing the docker quickstart
 ```
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/100.png)
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/101.png)
