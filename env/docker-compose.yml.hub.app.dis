@@ -7,8 +7,8 @@ services:
     restart: always
     volumes:
       - ../app:/www/web
-      - /var/docker-worspace/docker-app/env/services/web/nginx/conf:/etc/nginx
-      - /var/docker-worspace/docker-app/data/web/nginx/web_logs:/www/web_logs
+      - /var/docker-worspace/docker-envs/env/services/web/nginx/conf:/etc/nginx
+      - /var/docker-worspace/docker-envs/data/web/nginx/web_logs:/www/web_logs
     networks:
       - code-network
     depends_on:
@@ -19,9 +19,9 @@ services:
       - "3306:3306"
     restart: always
     volumes:
-      - /var/docker-worspace/docker-app/env/services/mysql/conf.d:/etc/mysql/conf.d
-      - /var/docker-worspace/docker-app/env/services/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - /var/docker-worspace/docker-app/data/mysql/data:/var/lib/mysql
+      - /var/docker-worspace/docker-envs/env/services/mysql/conf.d:/etc/mysql/conf.d
+      - /var/docker-worspace/docker-envs/env/services/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - /var/docker-worspace/docker-envs/data/mysql/data:/var/lib/mysql
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=myzero1&735
@@ -33,7 +33,7 @@ services:
     restart: always
     volumes:
       - ../app:/www/web
-      - /var/docker-worspace/docker-app/env/services/php/etc/php7.1.13.ini:/usr/local/etc/php/conf.d/php7.1.13.ini
+      - /var/docker-worspace/docker-envs/env/services/php/etc/php7.1.13.ini:/usr/local/etc/php/conf.d/php7.1.13.ini
     depends_on:
       - mongodb
       - mysql
@@ -46,9 +46,9 @@ services:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/data/logs
     volumes:
-      - /var/docker-worspace/docker-app/data/mongodb/db:/data/db
-      - /var/docker-worspace/docker-app/data/mongodb/logs:/data/logs
-      - /var/docker-worspace/docker-app/env/services/mongodb/example_db:/data/example_db
+      - /var/docker-worspace/docker-envs/data/mongodb/db:/data/db
+      - /var/docker-worspace/docker-envs/data/mongodb/logs:/data/logs
+      - /var/docker-worspace/docker-envs/env/services/mongodb/example_db:/data/example_db
     networks:
       - code-network
   redis:
@@ -64,9 +64,9 @@ services:
       '
     ]
     volumes:
-      - /var/docker-worspace/docker-app/env/services/redis/etc/redis.conf:/usr/local/etc/redis/redis.conf
-      - /var/docker-worspace/docker-app/env/services/redis/etc/redis-password:/run/secrets/redis-password
-      - /var/docker-worspace/docker-app/data/redis/data:/data
+      - /var/docker-worspace/docker-envs/env/services/redis/etc/redis.conf:/usr/local/etc/redis/redis.conf
+      - /var/docker-worspace/docker-envs/env/services/redis/etc/redis-password:/run/secrets/redis-password
+      - /var/docker-worspace/docker-envs/data/redis/data:/data
     networks:
       - code-network
 networks:
