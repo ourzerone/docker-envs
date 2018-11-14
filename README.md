@@ -8,12 +8,12 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 ### 2. Config the dockertool ### 
 * Map `C:\Users\Administrator\.docker` to `D:\.docker`
 ```
-rm -rf C:\Users\Administrator\.docker-----gitbash
-mkdir /d/.docker-----gitbash
+rm -rf C:\Users\Administrator\.docker
+mkdir /d/.docker
 
 win+r
 input 'cmd'
-mklink /J C:\Users\Administrator\.docker D:\.docker 
+mklink /J C:\Users\Administrator\.docker D:\.docker       ------------windows cmd
 Create default machine.by runing the docker quickstart
 ```
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/101.png)
@@ -30,8 +30,9 @@ docker-machine stop
 
 
 
-* Create `docker-workspace` in `D:\\.docker` and add docker-envs
+* Create `docker-workspace` in `D:\.docker` and add docker-envs
 ```
+cd ~/.docker
 mkdir docker-workspace
 cd docker-workspace
 git clone -b master_nmp  https://github.com/myzero1/docker-envs.git
@@ -68,10 +69,9 @@ sudo vi /var/lib/boot2docker/bootlocal.sh
 cp the content of D:\.docker\docker-workspace\docker-envs\env\bootlocal.sh to /var/lib/boot2docker/bootlocal.sh
 set ff=unix
 save /var/lib/boot2docker/bootlocal.sh
+exit
 docker-machine.exe restart
 ```
-
-![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/104.png)
 
 
 
@@ -96,7 +96,6 @@ add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/107.png)
 
 
-
 * Use `gitflow-plus`
 ```
 cd /d/.docker/docker-workspace/docker-envs
@@ -104,6 +103,22 @@ bash gitflow-plus-init.sh
 ```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
+
+
+* Use `docker-compose`
+```
+cd /d/.docker/docker-workspace/docker-envs/env
+docker-compose.exe up -d
+docker-compose.exe ps
+docker-compose.exe stop
+docker-compose.exe start
+docker-compose.exe restart
+winpty docker-compose.exe exec php bash
+winpty docker-compose.exe exec mysql bash
+winpty docker-compose.exe exec web bash
+```
+
+
 
 ### Others ###
 ```cmd
