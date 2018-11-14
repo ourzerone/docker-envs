@@ -7,7 +7,7 @@
 # 		data  	# for data
 
 # check to root
-sudo -i
+# sudo -i
 
 #change the mirror
 #sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://f1361db2.m.daocloud.io |g" /var/lib/boot2docker/profile
