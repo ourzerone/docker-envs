@@ -6,6 +6,9 @@
 # 		env		# for env
 # 		data  	# for data
 
+# check to root
+sudo -i
+
 #change the mirror
 #sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://f1361db2.m.daocloud.io |g" /var/lib/boot2docker/profile
 sudo sed -i "s|EXTRA_ARGS='.*$|EXTRA_ARGS='--registry-mirror=http://f1361db2.m.daocloud.io |g" /var/lib/boot2docker/profile
@@ -30,3 +33,4 @@ if [ ! -d ${userpath}.docker/docker-workspace/docker-envs/app/phpmyadmin ]; then
 	sudo sed -i "s/^\$cfg\['Servers'\]\[\$i\]\['password'\].*$/\$cfg['Servers'][\$i]['password'] = 'myzero1\&735';/g" phpmyadmin/libraries/config.default.php;
 	rm phpMyAdmin-$ver-all-languages.zip;
 fi
+
