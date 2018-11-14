@@ -41,11 +41,11 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 
 ### 2. Config the dockertool ### 
 * Map `C:\Users\Administrator\\.docker` to `D:\\.docker`
-    ```
+```
 win+r
 input 'cmd'
 mklink /J C:\Users\Administrator\.docker D:\.docker 
-    ```
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/101.png)
 
@@ -58,7 +58,7 @@ mklink /J C:\Users\Administrator\.docker D:\.docker
 
 
 * Create `docker-workspace` in `D:\\.docker` and add docker-envs
-    ```
+```
 mkdir docker-workspace
 git clone -b master_nmp  https://github.com/myzero1/docker-envs.git
 The files tree will as follows
@@ -80,52 +80,52 @@ D:\.docker
             gitflow-plus-init.sh
             LICENSE
             README.md
-    ```
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/103.png)
 
 
 
 * Settting `bootlocal.sh` in docker-machine
-    ```
+```
 docker-machine.exe ssh
 sudo vi /var/lib/boot2docker/bootlocal.sh
 cp the content of D:\.docker\docker-workspace\docker-envs\env\bootlocal.sh to /var/lib/boot2docker/bootlocal.sh
 save /var/lib/boot2docker/bootlocal.sh
 docker-machine.exe restart
-    ```
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/104.png)
 
 
 
 * Settting `docker-compose.yml`
-    ```
+```
 cd /d/.docker/docker-workspace/docker-envs/env
 cp docker-compose.yml.hub.nmp docker-compose.yml
 edit the docker-compose.yml
-    ```
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/105.png)
 
 
 
 * Settting `hosts`
-    ```
+```
 cd /c/Windows/System32/drivers/etc
 vi hosts
 add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
-    ```
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/107.png)
 
 
 
 * Use `gitflow-plus`
-    ```
+```
 cd /d/.docker/docker-workspace/docker-envs
 bash gitflow-plus-init.sh
-    ```
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
 
