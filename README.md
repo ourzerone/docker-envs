@@ -102,6 +102,7 @@ vi hosts
 add '127.0.0.1      phpmyadmin.app.test    	advanced.app.test' to hosts
 ```
 
+![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
 
 
 * Use `gitflow-plus`
@@ -117,7 +118,7 @@ winpty docker-compose.exe exec mysql bash
 winpty docker-compose.exe exec web bash
 ```
 
-![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/108.png)
+
 
 ### Others ###
 ```cmd
