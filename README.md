@@ -8,6 +8,7 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 ### 2. Config the dockertool ### 
 * Map `C:\Users\Administrator\.docker` to `D:\.docker`
 ```
+rm -rf C:\Users\Administrator\.docker-----gitbash
 mkdir /d/.docker-----gitbash
 
 win+r
@@ -60,6 +61,7 @@ D:\.docker
 
 * Settting `bootlocal.sh` in docker-machine
 ```
+docker-machine start
 docker-machine.exe ssh
 sudo vi /var/lib/boot2docker/bootlocal.sh
 cp the content of D:\.docker\docker-workspace\docker-envs\env\bootlocal.sh to /var/lib/boot2docker/bootlocal.sh
