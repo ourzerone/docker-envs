@@ -72,8 +72,6 @@ exit
 docker-machine.exe restart
 ```
 
-![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/104.png)
-
 
 
 * Settting `docker-compose.yml`
