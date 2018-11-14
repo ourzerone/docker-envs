@@ -24,6 +24,9 @@ mklink /J C:\Users\Administrator\.docker D:\.docker
 
 
 * Setting the network of default in virtualBox.
+```
+docker-machine stop
+```
 
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/102.png)
 
