@@ -8,12 +8,12 @@ It is a develper env.include nginx,mysql,php,mangodb,redis....services.
 ### 2. Config the dockertool ### 
 * Map `C:\Users\Administrator\.docker` to `D:\.docker`
 ```
-rm -rf C:\Users\Administrator\.docker-----gitbash
-mkdir /d/.docker-----gitbash
+rm -rf C:\Users\Administrator\.docker
+mkdir /d/.docker
 
 win+r
 input 'cmd'
-mklink /J C:\Users\Administrator\.docker D:\.docker 
+mklink /J C:\Users\Administrator\.docker D:\.docker       ------------windows cmd
 Create default machine.by runing the docker quickstart
 ```
 ![image](https://github.com/myzero1/show-time/blob/master/docker-envs/screenshot/101.png)
