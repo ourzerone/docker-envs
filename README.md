@@ -66,6 +66,7 @@ docker-machine start
 docker-machine.exe ssh
 sudo vi /var/lib/boot2docker/bootlocal.sh
 cp the content of D:\.docker\docker-workspace\docker-envs\env\bootlocal.sh to /var/lib/boot2docker/bootlocal.sh
+set ff=unix
 save /var/lib/boot2docker/bootlocal.sh
 docker-machine.exe restart
 ```
