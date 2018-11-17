@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   ndbm:
-    container_name: management1
+    container_name: ndbm
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh ndb_mgmd
     ports:
@@ -14,7 +14,7 @@ services:
       cluster:
         ipv4_address: 192.168.0.2
 
-  ndbd:
+  ndbd1:
     container_name: ndb1
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh ndbd
@@ -24,11 +24,13 @@ services:
       - /var/lib/boot2docker/docker-worspace/docker-envs/env/services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=defaultpass
+    depends_on:
+      - ndbm
     networks:
       cluster:
         ipv4_address: 192.168.0.3
 
-  ndbd:
+  ndbd2:
     container_name: ndb2
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh ndbd
@@ -38,11 +40,13 @@ services:
       - /var/lib/boot2docker/docker-worspace/docker-envs/env/services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=defaultpass
+    depends_on:
+      - ndbm
     networks:
       cluster:
         ipv4_address: 192.168.0.4
 
-  ndbd:
+  ndbd3:
     container_name: ndb3
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh ndbd
@@ -52,11 +56,13 @@ services:
       - /var/lib/boot2docker/docker-worspace/docker-envs/env/services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=defaultpass
+    depends_on:
+      - ndbm
     networks:
       cluster:
         ipv4_address: 192.168.0.5
 
-  ndbd:
+  ndbd4:
     container_name: ndb4
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh ndbd
@@ -66,37 +72,32 @@ services:
       - /var/lib/boot2docker/docker-worspace/docker-envs/env/services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=defaultpass
+    depends_on:
+      - ndbm
     networks:
       cluster:
         ipv4_address: 192.168.0.6
 
-  mysqld:
+  mysqld1:
     container_name: mysql1
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh mysqld
     ports:
-      - "3306:3306"
+      - "23306:3306"
     volumes:
       - /var/lib/boot2docker/docker-worspace/docker-envs/env/services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=defaultpass
+    depends_on:
+      - ndbm
+      - ndbd1
+      - ndbd2
+      - ndbd3
+      - ndbd4
     networks:
       cluster:
         ipv4_address: 192.168.0.10
 
-  mysqld2:
-    container_name: mysql2
-    image: "mysql/mysql-cluster"
-    entrypoint: /entrypoint.sh mysqld
-    ports:
-      - "3307:3306"
-    volumes:
-      - /var/lib/boot2docker/docker-worspace/docker-envs/env/services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
-    environment:
-      - MYSQL_ROOT_PASSWORD=defaultpass
-    networks:
-      cluster:
-        ipv4_address: 192.168.0.20
 networks:
   cluster:
     driver: bridge
