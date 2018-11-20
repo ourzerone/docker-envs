@@ -13,13 +13,12 @@ services:
     networks:
       cluster:
         ipv4_address: 192.168.0.2
-
   ndbd1:
     container_name: ndb1
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh ndbd
     ports:
-      - "23306:3306"
+      - "33306:3306"
     volumes:
       - ./services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
@@ -29,7 +28,6 @@ services:
     networks:
       cluster:
         ipv4_address: 192.168.0.3
-
   ndbd2:
     container_name: ndb2
     image: "mysql/mysql-cluster"
@@ -45,7 +43,6 @@ services:
     networks:
       cluster:
         ipv4_address: 192.168.0.4
-
   ndbd3:
     container_name: ndb3
     image: "mysql/mysql-cluster"
@@ -61,7 +58,6 @@ services:
     networks:
       cluster:
         ipv4_address: 192.168.0.5
-
   ndbd4:
     container_name: ndb4
     image: "mysql/mysql-cluster"
@@ -77,13 +73,12 @@ services:
     networks:
       cluster:
         ipv4_address: 192.168.0.6
-
-  mysqld1:
+  mysql1:
     container_name: mysql1
     image: "mysql/mysql-cluster"
     entrypoint: /entrypoint.sh mysqld
     ports:
-      - "33306:3306"
+      - "23306:3306"
     volumes:
       - ./services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
     environment:
@@ -96,7 +91,26 @@ services:
       - ndbd4
     networks:
       cluster:
-        ipv4_address: 192.168.0.10
+        ipv4_address: 192.168.0.11
+  mysql2:
+    container_name: mysql2
+    image: "mysql/mysql-cluster"
+    entrypoint: /entrypoint.sh mysqld
+    ports:
+      - "23306:3306"
+    volumes:
+      - ./services/mysql-cluster/cnf/my.cnf:/etc/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=defaultpass
+    depends_on:
+      - ndbm
+      - ndbd1
+      - ndbd2
+      - ndbd3
+      - ndbd4
+    networks:
+      cluster:
+        ipv4_address: 192.168.0.12
   mongodb:
     image: mongo:latest
     ports:
@@ -111,7 +125,7 @@ services:
       - ./services/mongodb/example_db:/data/example_db
     networks:
       cluster:
-        ipv4_address: 192.168.0.10
+        ipv4_address: 192.168.0.111
   redis:
     image: redis
     ports:
@@ -132,7 +146,7 @@ services:
       - ../data/redis/data:/data
     networks:
       cluster:
-        ipv4_address: 192.168.0.10
+        ipv4_address: 192.168.0.151
 networks:
   cluster:
     driver: bridge
