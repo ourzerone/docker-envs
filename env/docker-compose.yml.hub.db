@@ -17,6 +17,8 @@ services:
       - code-network
   mongodb:
     image: mongo:latest
+    ports:
+      - "27017:27017"
     restart: always
     environment:
       - MONGO_DATA_DIR=/data/db
@@ -29,6 +31,8 @@ services:
       - code-network
   redis:
     image: redis
+    ports:
+      - "6379:6379"
     restart: always
     environment:
         REDIS_PASS_FILE: /run/secrets/redis-password
